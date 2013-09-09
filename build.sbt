@@ -23,3 +23,11 @@ libraryDependencies ++= Seq(
   "junit"          % "junit"             % "4.8.2"     % "test",
   "org.mockito"    % "mockito-all"       % "1.9.0"     % "test"
 )
+
+publishTo <<= version { (v: String) =>
+  def isSnapshot = v.trim.contains("-")
+  val base = "http://repository.corespring.org/artifactory"
+  val repoType = if (isSnapshot) "snapshot" else "release"
+  val finalPath = base + "/ivy-" + repoType + "s"
+  Some( "Artifactory Realm" at finalPath )
+}
