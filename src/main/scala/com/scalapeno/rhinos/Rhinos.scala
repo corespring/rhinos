@@ -61,6 +61,9 @@ package object rhinos {
         log.error("Could not evaluate Javascript code: " + jse.getMessage)
         None
       }
+      case ee: EcmaError => {
+        throw ee
+      }
       case e: Exception => {
         log.error("Rhinos ran into a problem while evaluating Javascript.", e)
         None

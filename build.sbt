@@ -1,10 +1,12 @@
 name := "rhinos"
 
-version := "0.4.0.corespring-SNAPSHOT"
+version := "0.5.0.corespring-SNAPSHOT"
 
 organization := "com.scalapeno"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.0"
+
+crossScalaVersions := Seq("2.10.0", "2.9.2")
 
 scalacOptions := Seq("-deprecation", "-encoding", "utf8")
 
