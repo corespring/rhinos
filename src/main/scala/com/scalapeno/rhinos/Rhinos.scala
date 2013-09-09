@@ -1,23 +1,21 @@
 package com.scalapeno
 
-import scala.collection.immutable.ListMap
-import scala.collection.JavaConversions._
-import scala.util.control.Exception._
-
-import java.io._
-
 import org.slf4j.LoggerFactory
 import org.mozilla.javascript._
 import spray.json._
 
-
 package object rhinos {
+
   val log = LoggerFactory.getLogger(this.getClass)
 
+  // TODO: This should be parameterized
+  val sandbox = true
 
-  class RhinosScope(val wrapped: ScriptableObject) {
-
+  if (sandbox) {
+    ContextFactory.initGlobal(new SandboxContextFactory());
   }
+
+  class RhinosScope(val wrapped: ScriptableObject)
 
   implicit def scopeToRhinosScope(scope: ScriptableObject): RhinosScope = new RhinosScope(scope)
 
@@ -42,15 +40,6 @@ package object rhinos {
 
       }
     }
-
-//    def addTransformer[T:JsonReader] {
-//      withContext {
-//        context =>
-//          context.setWrapFactory(new JsWrapFactory[T])
-//      }
-//    }
-
-
 
     class JsWrapFactory[T:JsonReader] extends WrapFactory with RhinosJsonSupport {
       override def wrap(cx: Context, scope: Scriptable, obj: Any, staticType: Class[_]) = {
