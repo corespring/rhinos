@@ -4,3 +4,5 @@ target/
 
 rhinos.tmproj
 .DS_Store
+.idea/
+.idea_modules/
