@@ -1,6 +1,8 @@
+import scala.sys.process.Process
+
 name := "rhinos"
 
-version := "0.5.0.corespring-SNAPSHOT"
+version := "0.6.0.corespring-" + Process("git rev-parse --short HEAD").lines.head + "-SNAPSHOT"
 
 organization := "com.scalapeno"
 
