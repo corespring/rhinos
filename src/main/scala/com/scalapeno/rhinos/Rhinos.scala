@@ -36,8 +36,6 @@ package object rhinos {
         context =>
           val jsobj = Context.javaToJS(callbackObj, scope)
           scope.put(name, scope.wrapped, jsobj)
-
-
       }
     }
 
