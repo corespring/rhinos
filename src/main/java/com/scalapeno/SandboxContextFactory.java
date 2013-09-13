@@ -1,7 +1,7 @@
 package com.scalapeno;
 
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.ContextFactory;
+import org.corespring.javascript.Context;
+import org.corespring.javascript.ContextFactory;
 
 public class SandboxContextFactory extends ContextFactory {
 

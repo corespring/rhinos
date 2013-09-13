@@ -2,10 +2,6 @@ package com.scalapeno.rhinos
 
 import org.specs2.mutable._
 
-import spray.json._
-import spray.json.DefaultJsonProtocol._
-
-
 class RhinosFunctionSupportSpec extends SpecificationWithJUnit {
   
 //  "RhinosFunctionSupport.callFunction[T](...)" should {

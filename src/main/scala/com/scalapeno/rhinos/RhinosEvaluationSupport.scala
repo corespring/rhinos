@@ -4,9 +4,7 @@ import scala.util.control.Exception._
 
 import java.io._
 
-import org.slf4j.LoggerFactory
-import org.mozilla.javascript._
-import scala.collection.immutable.ListMap
+import org.corespring.javascript._
 import scala.collection.JavaConversions._
 
 trait RhinosEvaluationSupport { self: RhinosJsonSupport =>

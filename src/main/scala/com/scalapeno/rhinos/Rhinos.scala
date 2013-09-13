@@ -1,7 +1,7 @@
 package com.scalapeno
 
 import org.slf4j.LoggerFactory
-import org.mozilla.javascript._
+import org.corespring.javascript._
 import spray.json._
 
 package object rhinos {

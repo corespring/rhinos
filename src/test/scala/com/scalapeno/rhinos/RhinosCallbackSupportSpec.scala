@@ -1,7 +1,7 @@
 package com.scalapeno.rhinos
 
 import org.specs2.mutable.SpecificationWithJUnit
-import org.mozilla.javascript.NativeObject
+import org.corespring.javascript.NativeObject
 
 /**
  * @author <a href="mailto:jmahowald@angel.com">Josh Mahowald</a> 

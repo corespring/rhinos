@@ -1,7 +1,7 @@
 package com.scalapeno;
 
-import org.mozilla.javascript.NativeJavaObject;
-import org.mozilla.javascript.Scriptable;
+import org.corespring.javascript.NativeJavaObject;
+import org.corespring.javascript.Scriptable;
 
 public class SandboxNativeJavaObject extends NativeJavaObject {
 

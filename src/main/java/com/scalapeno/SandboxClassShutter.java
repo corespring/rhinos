@@ -1,6 +1,6 @@
 package com.scalapeno;
 
-import org.mozilla.javascript.ClassShutter;
+import org.corespring.javascript.ClassShutter;
 
 public class SandboxClassShutter implements ClassShutter {
 

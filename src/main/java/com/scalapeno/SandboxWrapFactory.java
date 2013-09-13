@@ -1,8 +1,8 @@
 package com.scalapeno;
 
-import org.mozilla.javascript.Context;
-import org.mozilla.javascript.Scriptable;
-import org.mozilla.javascript.WrapFactory;
+import org.corespring.javascript.Context;
+import org.corespring.javascript.Scriptable;
+import org.corespring.javascript.WrapFactory;
 
 public class SandboxWrapFactory extends WrapFactory {
 

@@ -1,6 +1,6 @@
 package com.scalapeno.rhinos
 
-import org.mozilla.javascript._
+import org.corespring.javascript._
 import spray.json._
 
 import scala.collection.immutable.ListMap
