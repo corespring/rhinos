@@ -10,6 +10,8 @@ scalaVersion := "2.10.0"
 
 crossScalaVersions := Seq("2.10.0", "2.9.2")
 
+unmanagedBase <<= baseDirectory { base => base / "lib" }
+
 scalacOptions := Seq("-deprecation", "-encoding", "utf8")
 
 resolvers ++= Seq(
@@ -21,7 +23,6 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   "io.spray" %% "spray-json" % "1.2.3",
   "com.typesafe.play" %% "play-json" % "2.2-2013-08-18-e10a665-SNAPSHOT",
-  "org.mozilla" %  "rhino" % "1.7R4",
   "org.slf4j" %  "slf4j-api" % "1.6.4",
   "ch.qos.logback" % "logback-classic" % "1.0.0" % "provided",
   "org.specs2" %% "specs2" % "1.12.3" % "test",

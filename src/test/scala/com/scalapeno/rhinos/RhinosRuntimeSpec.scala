@@ -110,14 +110,14 @@ class RhinosRuntimeSpec extends SpecificationWithJUnit    {
       }
     }
 
-    "return Some[List[Int]] when T = List[Int] and the script returns a Javascript array of numbers" in {
-      val result = rhinos.eval("""var a = [1,2,3]; a;""")
-      result match {
-        case Some(jsArray: play.api.libs.json.JsArray) if jsArray.value == "some string!" => success
-        case Some(jsArray: play.api.libs.json.JsArray) => { println(jsArray.value); failure }
-        case _ => failure("No result!")
-      }
-    }
+//    "return Some[List[Int]] when T = List[Int] and the script returns a Javascript array of numbers" in {
+//      val result = rhinos.eval("""var a = [1,2,3]; a;""")
+//      result match {
+//        case Some(jsArray: play.api.libs.json.JsArray) if jsArray.value == "some string!" => success
+//        case Some(jsArray: play.api.libs.json.JsArray) => { println(jsArray.value); failure }
+//        case _ => failure("No result!")
+//      }
+//    }
 //
 //    "return None when T = List[String] and the script returns a Javascript array of numbers" in {
 //      val result = rhinos.eval("""var a = [1,2,3]; a;""")
