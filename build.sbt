@@ -22,6 +22,7 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "io.spray" %% "spray-json" % "1.2.3",
+  "org.mozilla" % "rhino" % "1.7R4",
   "com.typesafe.play" %% "play-json" % "2.2-2013-08-18-e10a665-SNAPSHOT",
   "org.slf4j" %  "slf4j-api" % "1.6.4",
   "ch.qos.logback" % "logback-classic" % "1.0.0" % "provided",
