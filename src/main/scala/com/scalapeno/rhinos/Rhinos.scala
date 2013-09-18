@@ -2,7 +2,6 @@ package com.scalapeno
 
 import org.slf4j.LoggerFactory
 import org.mozilla.javascript._
-import spray.json._
 
 package object rhinos {
 
@@ -39,13 +38,6 @@ package object rhinos {
       }
     }
 
-    class JsWrapFactory[T:JsonReader] extends WrapFactory with RhinosJsonSupport {
-      override def wrap(cx: Context, scope: Scriptable, obj: Any, staticType: Class[_]) = {
-        println("trying to wrap up:" + obj)
-        Context.javaToJS(toScala[T](obj),scope)
-      }
-    }
-
   }
 
 
@@ -58,20 +50,6 @@ package object rhinos {
       case e: Exception => throw e
     } finally {
       Context.exit()
-    }
-  }
-
-  implicit object JsObjectReader extends JsonReader[JsObject] {
-    def read(value: JsValue) = value match {
-      case o: JsObject => o
-      case x => deserializationError("Expected JsObject, but got " + x)
-    }
-  }
-
-  implicit object JsArrayReader extends JsonReader[JsArray] {
-    def read(value: JsValue) = value match {
-      case o: JsArray => o
-      case x => deserializationError("Expected JsArray, but got " + x)
     }
   }
 

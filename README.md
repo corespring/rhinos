@@ -1,6 +1,6 @@
 Rhinos (or RhinoS) is a tiny Scala wrapper around Mozilla's Rhino Javascript runtime for the JVM. It allows you to run Javascript code and to extract return values as native Scala objects.
 
-Internally it uses [Spray Json](https://github.com/spray/spray-json) and its excellent support for mapping Javascript values (i.e. Json) to Scala classes.
+Internally it uses [Play Json](https://github.com/playframework/playframework) and its excellent support for mapping Javascript values (i.e. Json) to Scala classes.
 
 
 ### Purpose
@@ -20,8 +20,7 @@ All comments, suggestions, feature requests, pull requests, etc. and very welcom
 ### Feature Roadmap
 Rough ideas for the future:
 
-- ![Done](https://github.com/agemooij/rhinos/raw/master/project/images/accept.png) re-enable direct access to the underlying Spray Json AST for apps that just need to output Json produced by Javascript, like REST web services. Basically make it possible for T in rhino[T] to be the unconverted JsObject or JsArray
-- add support for calling Javascript functions, passing in native Scala arguments (using spray-json formatters)
+- ![Done](https://github.com/agemooij/rhinos/raw/master/project/images/accept.png) re-enable direct access to the underlying Play Json AST for apps that just need to output Json produced by Javascript, like REST web services. Basically make it possible for T in rhino[T] to be the unconverted JsObject or JsArray
 - ![Done](https://github.com/agemooij/rhinos/raw/master/project/images/accept.png) add support for creating a global scope outside of the current rhino[T] block so a pre-loaded (sealed) scope can be reused
 - ![Done](https://github.com/agemooij/rhinos/raw/master/project/images/accept.png) make the typing of rhino[T] more flexible so not all calls within the block have to produce a T
 - add support for injecting values (global variables) into the Rhino scope
@@ -38,7 +37,7 @@ Things are still a bit chaotic but if you want to start playing with Rhinos, her
 Rhinos is written in Scala (2.9.1/2.9.2), built using [SBT](https://github.com/harrah/xsbt/wiki) 0.11.x, and it depends on:
 
 - [org.mozilla.rhino](http://www.mozilla.org/rhino/) 1.7R4
-- [spray-json](https://github.com/spray/spray-json) 1.1.1
+- [play-json](https://github.com/playframework/playframework) 2.2.0-RC2
 - [slf4j-api](http://www.slf4j.org/) 1.6.4
 - [specs2](http://etorreborre.github.com/specs2/) 1.9 (only for testing)
 

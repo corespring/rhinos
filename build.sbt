@@ -15,13 +15,11 @@ unmanagedBase <<= baseDirectory { base => base / "lib" }
 scalacOptions := Seq("-deprecation", "-encoding", "utf8")
 
 resolvers ++= Seq(
-  "spray repo" at "http://repo.spray.io",
   "typesafe releases" at "http://repo.typesafe.com/typesafe/releases/",
   "typesafe snapshots" at "http://repo.typesafe.com/typesafe/snapshots/"
 )
 
 libraryDependencies ++= Seq(
-  "io.spray" %% "spray-json" % "1.2.3",
   "org.mozilla" % "rhino" % "1.7R4",
   "com.typesafe.play" %% "play-json" % "2.2-2013-08-18-e10a665-SNAPSHOT",
   "org.slf4j" %  "slf4j-api" % "1.6.4",

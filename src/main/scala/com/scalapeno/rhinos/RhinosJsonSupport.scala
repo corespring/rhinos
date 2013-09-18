@@ -1,10 +1,10 @@
 package com.scalapeno.rhinos
 
 import org.mozilla.javascript._
-import spray.json._
 
-import scala.collection.immutable.ListMap
 import scala.collection.JavaConversions._
+import play.api.libs.json._
+import scala.Some
 
 object NativeJavaObj {
   def unapply(x: Any): Option[Any] = x match {
@@ -14,31 +14,8 @@ object NativeJavaObj {
 }
 
 trait RhinosJsonSupport {
-  def toScala[T: JsonReader](input: Any): Option[T] = input match {
-    case NativeJavaObj(x: T) => Some(x)
-    case o => toJsValueOption(o).flatMap {
-      jsValue =>
-        try {
-          val converted = jsValue.convertTo[T]
-          Some(converted)
-        }
-        catch {
-          case e: DeserializationException => {
-            log.info("Couldn't deserialize:" + jsValue, e)
-            None
-          }
-          case e: Throwable => throw e
-        }
-    }
-  }
 
-
-  private def toJsValueOption(input: Any): Option[JsValue] = toJsValue(input) match {
-    case value if value == JsNull => None
-    case jsValue@_ => Some(jsValue)
-  }
-
-  private def toJsValue(input: Any): JsValue = input match {
+  def toJsValue(input: Any): JsValue = input match {
     case b: Boolean => JsBoolean(b)
     case i: Int => JsNumber(i)
     case l: Long => JsNumber(l)
@@ -60,12 +37,12 @@ trait RhinosJsonSupport {
   }
 
   private def toJsObject(nativeObject: NativeObject): JsObject = {
-    val tuples = nativeObject.entrySet.toList.map(entry => (entry.getKey.toString, toJsValue(entry.getValue)))
-
-    new JsObject(ListMap(tuples: _*))
+    println(nativeObject.entrySet())
+    JsObject(nativeObject.entrySet.toList.map(entry => (entry.getKey.toString, toJsValue(entry.getValue))))
   }
 
   private def toJsArray(nativeArray: NativeArray): JsArray = {
     new JsArray(nativeArray.iterator().map(item => toJsValue(item)).toList)
   }
+
 }
