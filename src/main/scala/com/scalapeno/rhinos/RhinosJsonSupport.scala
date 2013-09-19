@@ -16,6 +16,7 @@ object NativeJavaObj {
 trait RhinosJsonSupport {
 
   def toJsValue(input: Any): JsValue = input match {
+    case j: JsValue => j
     case b: Boolean => JsBoolean(b)
     case i: Int => JsNumber(i)
     case l: Long => JsNumber(l)
