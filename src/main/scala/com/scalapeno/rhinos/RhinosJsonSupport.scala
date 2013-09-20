@@ -38,7 +38,6 @@ trait RhinosJsonSupport {
   }
 
   private def toJsObject(nativeObject: NativeObject): JsObject = {
-    println(nativeObject.entrySet())
     JsObject(nativeObject.entrySet.toList.map(entry => (entry.getKey.toString, toJsValue(entry.getValue))))
   }
 

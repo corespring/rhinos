@@ -171,7 +171,7 @@ class RhinosRuntimeSpec extends SpecificationWithJUnit    {
             (jsObject \ "val2").asInstanceOf[JsNumber].value === 2
             success
           }
-          case Some(thingElse) => { println(thingElse.getClass.toString); println(thingElse); success }
+          case Some(thingElse) => success
           case _ => failure(s"Failed for value $jsObject")
         }
       }
