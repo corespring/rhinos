@@ -2,6 +2,7 @@ package com.scalapeno
 
 import org.slf4j.LoggerFactory
 import org.mozilla.javascript._
+import play.api.libs.json._
 
 package object rhinos {
 
@@ -24,22 +25,7 @@ package object rhinos {
   class RhinosRuntime(
                        val scope: RhinosScope = withContext[RhinosScope](_.initStandardObjects()).get
                        ) extends RhinosEvaluationSupport with RhinosJsonSupport {
-
-    /**
-     * Makes an object available to javascript so that it can be called off to
-     * @param name
-     * @param callbackObj
-     */
-    def addObject(name: String, callbackObj: Any) {
-      withContext {
-        context =>
-          val jsobj = Context.javaToJS(callbackObj, scope)
-          scope.put(name, scope.wrapped, jsobj)
-      }
-    }
-
   }
-
 
   private[rhinos] def withContext[T](block: Context => T): Option[T] = {
     val context = Context.enter()

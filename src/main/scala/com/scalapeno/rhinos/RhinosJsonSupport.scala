@@ -22,6 +22,7 @@ trait RhinosJsonSupport {
     case l: Long => JsNumber(l)
     case f: Float => JsNumber(f)
     case d: Double => JsNumber(d)
+    case b: BigDecimal => JsNumber(b.toDouble)
     case s: String => JsString(s)
 
     case o: NativeObject => toJsObject(o)
@@ -32,7 +33,6 @@ trait RhinosJsonSupport {
     case null => JsNull
     case other@_ => {
       log.warn("Cannot convert '%s' to a JsValue. Returning None.".format(other))
-
       JsNull
     }
   }
