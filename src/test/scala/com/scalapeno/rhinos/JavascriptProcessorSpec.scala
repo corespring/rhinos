@@ -9,7 +9,7 @@ class JavascriptProcessorSpec extends Specification with JavascriptProcessor {
   "js" should {
 
     "not allow arbitrary code execution" in {
-      js("java.lang.System.println('foo')") must throwAn[org.mozilla.javascript.EcmaError]
+      js("java.lang.System.println('foo')") must throwAn[EcmaErrorWithSource]
     }
 
     "return String values correctly" in {

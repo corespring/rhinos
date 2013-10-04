@@ -2,11 +2,10 @@ package com.scalapeno.rhinos
 
 import scala.util.control.Exception._
 import org.mozilla.javascript._
+import play.api.libs.json._
 
 trait RhinosEvaluationSupport { self: RhinosJsonSupport =>
   val scope: RhinosScope
-
-  import play.api.libs.json._
 
   def eval(javascriptCode: String): Option[JsValue] = {
     withContext[Any] { context =>

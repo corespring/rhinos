@@ -1,8 +1,9 @@
 package com.scalapeno
 
 import play.api.libs.json._
-import com.scalapeno.rhinos.RhinosRuntime
+import com.scalapeno.rhinos.{EcmaErrorWithSource, RhinosRuntime}
 import play.api.libs.json.JsValue
+import org.mozilla.javascript.EcmaError
 
 trait JavascriptProcessor {
 
@@ -35,7 +36,12 @@ trait JavascriptProcessor {
   }
 
   def js(javascript: String, variables: Map[String, Any] = Map.empty): Option[JsValue] = {
-    new RhinosRuntime().eval(s"${variables.map{ case(k,v) => toVar(k, v) }.mkString("\n")}\n$javascript")
+    val script = s"${variables.map{ case(k,v) => toVar(k, v) }.mkString("\n")}\n$javascript"
+    try {
+      new RhinosRuntime().eval(script)
+    } catch {
+      case e: EcmaError => throw new EcmaErrorWithSource(e, script)
+    }
   }
 
 }
