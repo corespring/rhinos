@@ -15,7 +15,7 @@ class JavascriptProcessorSpec extends Specification with JavascriptProcessor {
     "return String values correctly" in {
       val string = "Yay!"
       js(s""" "$string";""") match {
-        case Some(jsString: JsString) if jsString.value === string => success
+        case Some((script:String,jsString: JsString)) if jsString.value === string => success
         case _ => failure
       }
     }
@@ -25,7 +25,7 @@ class JavascriptProcessorSpec extends Specification with JavascriptProcessor {
       "puts String in scope" in {
         val stringValue = "great!"
         js("str;", Map("str" -> stringValue)) match {
-          case Some(jsString: JsString) => {
+          case Some((script:String,jsString: JsString)) => {
             jsString.value === stringValue
             success
           }
@@ -36,7 +36,7 @@ class JavascriptProcessorSpec extends Specification with JavascriptProcessor {
       "puts JsString in scope" in {
         val stringValue = "great!"
         js("str;", Map("str" -> JsString(stringValue))) match {
-          case Some(jsString: JsString) => {
+          case Some((script:String,jsString: JsString)) => {
             jsString.value === stringValue
             success
           }
@@ -56,7 +56,7 @@ class JavascriptProcessorSpec extends Specification with JavascriptProcessor {
 
       def testNumber(number: Any) = {
         js("number;", Map("number" -> number)) match {
-          case Some(jsNumber: JsNumber) => jsNumber.value.toDouble === parseDouble(number); success
+          case Some((script:String,jsNumber: JsNumber)) => jsNumber.value.toDouble === parseDouble(number); success
           case _ => failure(s"Failed for value $number")
         }
       }
@@ -93,7 +93,7 @@ class JavascriptProcessorSpec extends Specification with JavascriptProcessor {
       "puts JsArrays in scope" in {
         val array = Json.arr(1, 2, 3)
         js("array;", Map("array" -> array)) match {
-          case Some(jsArray: JsArray) => success
+          case Some((script:String,jsArray: JsArray)) => success
           case _ => failure
         }
       }
