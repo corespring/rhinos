@@ -35,10 +35,10 @@ trait JavascriptProcessor {
       s"Cannot convert object of type ${value.getClass.toString} to Javascript var")
   }
 
-  def js(javascript: String, variables: Map[String, Any] = Map.empty): Option[JsValue] = {
+  def js(javascript: String, variables: Map[String, Any] = Map.empty): Option[(String,JsValue)] = {
     val script = s"${variables.map{ case(k,v) => toVar(k, v) }.mkString("\n")}\n$javascript"
     try {
-      new RhinosRuntime().eval(script)
+      new RhinosRuntime().eval(script).map(script -> _)
     } catch {
       case e: EcmaError => throw new EcmaErrorWithSource(e, script)
     }
