@@ -10,7 +10,6 @@ object Build extends sbt.Build {
   def buildSettings = Defaults.defaultSettings ++ Seq(
     organization := "com.scalapeno",
     scalaVersion := "2.10.0",
-    crossScalaVersions := Seq("2.9.2", "2.10.0"),
     version := appVersion,
     resolvers ++= Seq(
       "typesafe releases" at "http://repo.typesafe.com/typesafe/releases/",
