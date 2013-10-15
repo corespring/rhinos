@@ -30,7 +30,7 @@ object Build extends sbt.Build {
         def isSnapshot = v.trim.contains("-")
         val base = "http://repository.corespring.org/artifactory"
         val repoType = if (isSnapshot) "snapshot" else "release"
-        val finalPath = base + "/public-ivy-" + repoType + "s"
+        val finalPath = base + "/ivy-" + repoType + "s"
         Some( "Artifactory Realm" at finalPath )
     },
     unmanagedBase <<= baseDirectory { base => base / "lib" },
