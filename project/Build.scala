@@ -17,7 +17,7 @@ object Build extends sbt.Build {
     ),
     libraryDependencies ++= Seq(
       "org.mozilla" % "rhino" % "1.7R4",
-      "com.typesafe.play" %% "play-json" % "2.2.0",
+      "com.typesafe.play" %% "play-json" % "2.2.0" % "provided",
       "org.slf4j" %  "slf4j-api" % "1.6.4",
       "ch.qos.logback" % "logback-classic" % "1.0.0" % "provided",
       "org.specs2" %% "specs2" % "1.12.3" % "test",
