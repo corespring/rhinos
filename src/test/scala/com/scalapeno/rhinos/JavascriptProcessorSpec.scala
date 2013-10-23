@@ -2,7 +2,6 @@ package com.scalapeno.rhinos
 
 import play.api.libs.json._
 import org.specs2.mutable.Specification
-import com.scalapeno.JavascriptProcessor
 
 class JavascriptProcessorSpec extends Specification with JavascriptProcessor {
 
@@ -10,6 +9,16 @@ class JavascriptProcessorSpec extends Specification with JavascriptProcessor {
 
     "not allow arbitrary code execution" in {
       js("java.lang.System.println('foo')") must throwAn[EcmaErrorWithSource]
+    }
+
+    "kill thread after 10 seconds" in {
+      js(
+        """
+          var x = "";
+          while (true) {
+            x += "0";
+          }
+        """) must throwA[ThreadDeath]
     }
 
     "return String values correctly" in {
