@@ -11,7 +11,7 @@ import org.mozilla.javascript.Scriptable;
 public class TimeoutContextFactory extends ContextFactory {
 
   /** Default is 10 seconds **/
-  private static final long DEFAULT_SECONDS_TIMEOUT = 10;
+  private static final long DEFAULT_SECONDS_TIMEOUT = 3;
   private static final long DEFAULT_MILLISECONDS_TIMEOUT = DEFAULT_SECONDS_TIMEOUT * 1000;
 
   private final long millisecondTimeout;
