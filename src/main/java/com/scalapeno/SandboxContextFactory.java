@@ -1,9 +1,8 @@
 package com.scalapeno;
 
 import org.mozilla.javascript.Context;
-import org.mozilla.javascript.ContextFactory;
 
-public class SandboxContextFactory extends ContextFactory {
+public class SandboxContextFactory extends TimeoutContextFactory {
 
   @Override
   protected Context makeContext() {

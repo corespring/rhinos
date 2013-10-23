@@ -1,7 +1,6 @@
-package com.scalapeno
+package com.scalapeno.rhinos
 
 import play.api.libs.json._
-import com.scalapeno.rhinos.{EcmaErrorWithSource, RhinosRuntime}
 import play.api.libs.json.JsValue
 import org.mozilla.javascript.EcmaError
 
