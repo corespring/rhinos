@@ -2,12 +2,11 @@ import sbt._
 import Keys._
 import Project._
 import scala.sys.process.Process
+import sbtrelease.ReleasePlugin._
 
 object Build extends sbt.Build {
 
-  val appVersion = "0.6.0.corespring-" + Process("git rev-parse --short HEAD").lines.head + "-SNAPSHOT"
-
-  def buildSettings = Defaults.defaultSettings ++ Seq(
+  def buildSettings = Defaults.defaultSettings ++ releaseSettings ++ Seq(
     organization := "com.scalapeno",
     scalaVersion := "2.10.0",
     version := appVersion,
