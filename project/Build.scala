@@ -7,7 +7,7 @@ import sbtrelease.ReleasePlugin._
 object Build extends sbt.Build {
 
   def buildSettings = Defaults.defaultSettings ++ releaseSettings ++ Seq(
-    organization := "com.scalapeno",
+    organization := "org.corespring.forks.scalapeno",
     scalaVersion := "2.10.0",
     resolvers ++= Seq(
       "typesafe releases" at "http://repo.typesafe.com/typesafe/releases/",
